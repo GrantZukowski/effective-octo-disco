@@ -18,6 +18,8 @@ defmodule DogBreedsWeb.Router do
     pipe_through :browser
 
     live "/", PageLive, :index
+
+    resources "/dog", DogController
   end
 
   # Other scopes may use custom stacks.
