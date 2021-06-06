@@ -75,6 +75,7 @@ defmodule DogBreedsWeb.DogControllerTest do
     test "deletes chosen dog", %{conn: conn, dog: dog} do
       conn = delete(conn, Routes.dog_path(conn, :delete, dog))
       assert redirected_to(conn) == Routes.dog_path(conn, :index)
+
       assert_error_sent 404, fn ->
         get(conn, Routes.dog_path(conn, :show, dog))
       end

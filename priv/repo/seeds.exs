@@ -9,3 +9,11 @@
 #
 # We recommend using the bang functions (`insert!`, `update!`
 # and so on) as they will fail if something goes wrong.
+defmodule DogBreeds.Seeds do
+  alias DogBreeds.Repo
+  alias DogBreeds.Breeds.Dog
+
+  IO.inspect("running seeds")
+
+  Repo.insert!(%Dog{name: "boxer"}) |> IO.inspect()
+end

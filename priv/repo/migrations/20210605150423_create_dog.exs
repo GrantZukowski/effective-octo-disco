@@ -8,6 +8,5 @@ defmodule DogBreeds.Repo.Migrations.CreateDog do
 
       timestamps()
     end
-
   end
 end
