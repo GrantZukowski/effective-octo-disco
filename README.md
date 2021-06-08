@@ -1,17 +1,33 @@
 ## Vetspire Take-home (max 2 hours)
 
-Fork this repo. Build a simple full stack app using frameworks of your choice. Submit your results as a pull request
-to this repo with instruction on how to build/run it or, even better, a link to where we can see it already
-running/deployed.
+You will need elixir, erlang, node, npm, and postgres (running) to run this application.
 
-There is probably more here than can be finished in two hours. Don't worry about completeness. Focus on what's 
-important and interesting to you.   
+Use the normal up routine for an elixir application:
 
-We use `Elixir`, `Ecto`, `Absinthe`, `GraphQL`, `Typescript/Javascript` and `React` at Vetspire but you are welcome to use 
-whatever languages and frameworks you prefer.
+$ mix deps.get
+$ mix deps.compile
+$ cd assets && npm install && node node_modules/webpack/bin/webpack.js --mode development
+$ cd ..
+$ mix ecto.create
+$ mix run priv/repo/seeds.exs
+$ mix phx.server
 
-We encourage you to include a README with notes about your language and framework choices as well as your design 
-decisions.
+For this application I chose to use Phoenix, Elixir, Postgres, and Live View.  I chose this framework
+because it works together really well and is familiar to me.  Also, there is little to no javascript, so
+everything is created in Elixir (except for templates etc.)  In terms of design, I wanted to treat this
+as if it was a blog post.
+
+Initially, I focused on getting the basic functionality of adding and editing a dog breed with a supported 
+postgres backend database.  I was also interested in setting up a deploy pipeline, but decided to save that for later.
+
+Once I got that done, I focused on the photo upload.  I decided to store the file locally for ease of use
+which does work.  I went for the bonus feature first becuase I thought that was the most useful.
+
+I did not associate the dog breeds with the photos yet, but both are stored, so the next step was to associate them
+in the database so they could be displayed together.
+
+To me what was most interesting was getting all the basic functionality of editing and uploading an image.  I also spent
+time setting up the seeds file, so the page can be populated quickly by whatever developer needs to work on it.
 
 ### Features
 - Backend API that serves:
