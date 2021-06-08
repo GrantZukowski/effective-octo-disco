@@ -65,6 +65,10 @@ config :dog_breeds, DogBreedsWeb.Endpoint,
     ]
   ]
 
+# Set where the images will be stored
+config :dog_breeds,
+  uploads_directory: "/images"
+
 # Do not include metadata nor timestamps in development logs
 config :logger, :console, format: "[$level] $message\n"
 

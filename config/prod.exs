@@ -16,6 +16,10 @@ config :dog_breeds, DogBreedsWeb.Endpoint,
 # Do not print debug messages in production
 config :logger, level: :info
 
+# Set where the images will be stored
+config :dog_breeds,
+  uploads_directory: System.get_env("IMAGES_UPLOADS_DIRECTORY") || "/images"
+
 # ## SSL Support
 #
 # To get SSL working, you will need to add the `https` key
