@@ -15,5 +15,17 @@ defmodule DogBreeds.Seeds do
 
   IO.inspect("running seeds")
 
-  Repo.insert!(%Dog{name: "boxer"}) |> IO.inspect()
+  dogs = [
+    %Dog{name: "boxer"},
+    %Dog{name: "great dane"},
+    %Dog{name: "cocker spaniel"},
+    %Dog{name: "english bulldog"},
+    %Dog{name: "irish terrier"},
+    %Dog{name: "norwich terrier"},
+    %Dog{name: "pomeranian"},
+    %Dog{name: "shetland sheepdog"},
+    %Dog{name: "border collie"}
+  ]
+
+  Enum.each(dogs, fn dog -> Repo.insert!(dog) end)
 end

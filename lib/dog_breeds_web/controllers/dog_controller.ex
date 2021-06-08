@@ -17,9 +17,7 @@ defmodule DogBreedsWeb.DogController do
   def create(conn, %{"dog" => dog_params}) do
     IO.inspect(dog_params)
 
-
     File.cp(dog_params["photo"].path, "images/#{dog_params["photo"].filename}")
-
 
     case Breeds.create_dog(dog_params) do
       {:ok, dog} ->
