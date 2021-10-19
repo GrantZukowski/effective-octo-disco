@@ -1,4 +1,4 @@
-## Vetspire Take-home (max 2 hours)
+Dog breeds app
 
 You will need elixir, erlang, node, npm, and postgres (running) to run this application.
 
