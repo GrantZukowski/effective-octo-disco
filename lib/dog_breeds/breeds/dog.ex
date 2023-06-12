@@ -7,6 +7,8 @@ defmodule DogBreeds.Breeds.Dog do
     field :name, :string
 
     timestamps()
+
+    has_one :image, DogBreeds.Images.Image
   end
 
   @doc false

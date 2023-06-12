@@ -8,5 +8,12 @@ defmodule DogBreeds.Repo.Migrations.CreateDog do
 
       timestamps()
     end
+
+    create table(:image) do
+      add :url, :string
+      add :dog_id, references(:dog, on_delete: :delete_all)
+
+      timestamps()
+    end
   end
 end

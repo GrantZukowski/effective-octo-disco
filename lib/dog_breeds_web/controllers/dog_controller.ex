@@ -5,18 +5,14 @@ defmodule DogBreedsWeb.DogController do
   alias DogBreeds.Breeds.Dog
 
   def index(conn, _params) do
-    dog = Breeds.list_dog()
-    render(conn, "index.html", dog: dog)
+    render(conn, "index.html", dog: Breeds.list_dog())
   end
 
   def new(conn, _params) do
-    changeset = Breeds.change_dog(%Dog{})
-    render(conn, "new.html", changeset: changeset)
+    render(conn, "new.html", changeset: Breeds.change_dog(%Dog{}))
   end
 
   def create(conn, %{"dog" => dog_params}) do
-    IO.inspect(dog_params)
-
     File.cp(dog_params["photo"].path, "images/#{dog_params["photo"].filename}")
 
     case Breeds.create_dog(dog_params) do
@@ -31,7 +27,7 @@ defmodule DogBreedsWeb.DogController do
   end
 
   def show(conn, %{"id" => id}) do
-    dog = Breeds.get_dog!(id)
+    dog = Breeds.get_dog!(id) |> DogBreeds.Repo.preload(:image)
     render(conn, "show.html", dog: dog)
   end
 
@@ -56,8 +52,7 @@ defmodule DogBreedsWeb.DogController do
   end
 
   def delete(conn, %{"id" => id}) do
-    dog = Breeds.get_dog!(id)
-    {:ok, _dog} = Breeds.delete_dog(dog)
+    {:ok, _dog} = id |> Breeds.get_dog!() |> Breeds.delete_dog()
 
     conn
     |> put_flash(:info, "Dog deleted successfully.")

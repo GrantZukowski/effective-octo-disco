@@ -12,6 +12,11 @@
     <%= @dog.body %>
   </li>
 
+  <li>
+    <strong>Image:</strong>
+    <img src="<%= @dog.image.url %>">
+  </li>
+
 </ul>
 
 <span><%= link "Edit", to: Routes.dog_path(@conn, :edit, @dog) %></span>
