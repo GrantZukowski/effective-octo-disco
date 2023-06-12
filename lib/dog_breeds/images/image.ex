@@ -12,6 +12,7 @@ defmodule DogBreeds.Images.Image do
   def changeset(image, attrs) do
     image
     |> cast(attrs, [:url])
-    |> validate_required([:url])
+    |> validate_required([:url, :dog_id])
+    |> foreign_key_constraint(:dog_id)
   end
 end
